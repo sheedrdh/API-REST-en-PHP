@@ -1,0 +1,6 @@
+RewriteEngine On
+# Toutes les requêtes qui ne sont pas de vrais fichiers/dossiers
+# sont redirigées vers index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php [QSA,L]
