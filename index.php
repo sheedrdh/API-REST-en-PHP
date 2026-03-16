@@ -41,6 +41,20 @@ $method = $_SERVER['REQUEST_METHOD'];
 $controller = new ProductController();
 
 switch ($resource) {
+    case '':
+        // Accueil de l’API : on peut afficher un message de bienvenue ou rediriger
+        echo json_encode([
+            'message' => 'Bienvenue sur mon API PHP',
+            'endpoints' => [
+                'GET /products' => 'Liste tous les produits',
+                'GET /products/{id}' => 'Affiche un produit spécifique',
+                'POST /products' => 'Crée un nouveau produit',
+                'PUT /products/{id}' => 'Met à jour un produit',
+                'DELETE /products/{id}' => 'Supprime un produit'
+            ]
+        ]);
+        break;
+
     case 'products':
         // Gestion du CRUD selon la méthode HTTP
         if ($method === 'GET') {
